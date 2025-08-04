@@ -1,1 +1,110 @@
-chutmunsinnhacccc
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hép Pi Bớt Dayyy!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive;
+            background: radial-gradient(circle at center, #fff0f5, #ffe6f0, #ffcce6);
+            overflow: hidden;
+            animation: bgPulse 5s infinite alternate;
+        }
+        @keyframes bgPulse {
+            0% { background-position: center; }
+            100% { background-position: bottom; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+        .message {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 4em;
+            line-height: 1.2;
+            animation: popin 2s ease, glow 2s infinite alternate;
+            white-space: pre-line;
+        }
+        @keyframes popin {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff69b4; }
+            to { text-shadow: 0 0 25px #ff1493, 0 0 35px #ff1493; }
+        }
+        .cat-float {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('https://i.imgur.com/Z6nR7VP.png') no-repeat center/contain;
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        .big-cat {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 250px;
+            background: url('https://i.imgur.com/6XJ9Y8s.png') no-repeat center/contain;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">Hép Pi Bớt Dayyy!
+🎉🐾</div>
+
+    <div class="big-cat"></div>
+
+    <script>
+        // Tạo mưa confetti
+        for (let i = 0; i < 50; i++) {
+            let confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (3 + Math.random() * 3) + 's';
+            confetti.style.backgroundColor = ['#ff69b4','#ffd700','#ff1493'][Math.floor(Math.random()*3)];
+            confetti.style.opacity = Math.random();
+            document.body.appendChild(confetti);
+        }
+
+        // Tạo mèo bay bay
+        for (let i = 0; i < 10; i++) {
+            let cat = document.createElement('div');
+            cat.className = 'cat-float';
+            cat.style.left = Math.random() * 100 + 'vw';
+            cat.style.top = (Math.random() * 50 + 10) + 'vh';
+            cat.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(cat);
+        }
+    </script>
+
+</body>
+</html>
